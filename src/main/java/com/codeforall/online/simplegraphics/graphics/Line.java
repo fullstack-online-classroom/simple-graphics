@@ -3,26 +3,39 @@ package com.codeforall.online.simplegraphics.graphics;
 import java.awt.*;
 import java.awt.geom.Line2D;
 
+/**
+ * Represents a straight line defined by two endpoints.
+ * The line can be drawn, translated, resized, or deleted from a canvas.
+ * It supports color customization and integrates with the {@link Canvas} for rendering.
+ *
+ * Implements:
+ * <ul>
+ *   <li>{@link Shape} – provides geometric and canvas-renderable properties</li>
+ *   <li>{@link Colorable} – allows setting the drawing color</li>
+ *   <li>{@link Movable} – supports translation and resizing via grow</li>
+ * </ul>
+ */
 public class Line implements Shape, Colorable, Movable {
+
     private Color color = Color.BLACK;
-    private double x1;
-    private double y1;
-    private double x2;
-    private double y2;
+    private double startX;
+    private double startY;
+    private double endX;
+    private double endY;
 
     /**
      * Constructs a line with a given starting and ending location.
      *
-     * @param x1 the x-coordinate of the starting point
-     * @param y1 the y-coordinate of the starting point
-     * @param x2 the x-coordinate of the ending point
-     * @param y2 the y-coordinate of the ending point
+     * @param startX the x-coordinate of the starting point
+     * @param startY the y-coordinate of the starting point
+     * @param endX the x-coordinate of the ending point
+     * @param endY the y-coordinate of the ending point
      */
-    public Line(double x1, double y1, double x2, double y2) {
-        this.x1 = x1;
-        this.x2 = x2;
-        this.y1 = y1;
-        this.y2 = y2;
+    public Line(double startX, double startY, double endX, double endY) {
+        this.startX = startX;
+        this.endX = endX;
+        this.startY = startY;
+        this.endY = endY;
     }
 
     /**
@@ -31,7 +44,7 @@ public class Line implements Shape, Colorable, Movable {
      * @return the leftmost x-position
      */
     public int getX() {
-        return (int) Math.round(Math.min(x1, x2));
+        return (int) Math.round(Math.min(startX, endX));
     }
 
     /**
@@ -40,7 +53,7 @@ public class Line implements Shape, Colorable, Movable {
      * @return the topmost y-position
      */
     public int getY() {
-        return (int) Math.round(Math.min(y1, y2));
+        return (int) Math.round(Math.min(startY, endY));
     }
 
     /**
@@ -49,7 +62,7 @@ public class Line implements Shape, Colorable, Movable {
      * @return the width
      */
     public int getWidth() {
-        return (int) Math.round(Math.abs(x2 - x1));
+        return (int) Math.round(Math.abs(endX - startX));
     }
 
     /**
@@ -58,7 +71,7 @@ public class Line implements Shape, Colorable, Movable {
      * @return the height
      */
     public int getHeight() {
-        return (int) Math.round(Math.abs(y2 - y1));
+        return (int) Math.round(Math.abs(endY - startY));
     }
 
     /**
@@ -68,10 +81,10 @@ public class Line implements Shape, Colorable, Movable {
      * @param dy the amount by which to move in y-direction
      */
     public void translate(double dx, double dy) {
-        x1 += dx;
-        y1 += dy;
-        x2 += dx;
-        y2 += dy;
+        startX += dx;
+        startY += dy;
+        endX += dx;
+        endY += dy;
         Canvas.getInstance().repaint();
     }
 
@@ -82,19 +95,23 @@ public class Line implements Shape, Colorable, Movable {
      * @param dh the amount by which to resize the height on each side
      */
     public void grow(double dw, double dh) {
-        if (x1 <= x2) {
-            x1 -= dw;
-            x2 += dw;
+
+        if (startX <= endX) {
+            startX -= dw;
+            endX += dw;
+
         } else {
-            x1 += dw;
-            x2 -= dw;
+            startX += dw;
+            endX -= dw;
         }
-        if (y1 <= y2) {
-            y1 -= dh;
-            y2 += dh;
+
+        if (startY <= endY) {
+            startY -= dh;
+            endY += dh;
+
         } else {
-            y1 += dh;
-            y2 -= dh;
+            startY += dh;
+            endY -= dh;
         }
 
         Canvas.getInstance().repaint();
@@ -124,15 +141,25 @@ public class Line implements Shape, Colorable, Movable {
         Canvas.getInstance().hide(this);
     }
 
+    /**
+     * Returns a string representation of the line, including both endpoints.
+     *
+     * @return a string describing the line's coordinates
+     */
     public String toString() {
-        return "Line[x1=" + x1 + ",y1=" + y1 + ",x2=" + x2 + ",y2=" + y2 + "]";
+        return "Line[startX=" + startX + ",startY=" + startY + ",endX=" + endX + ",endY=" + endY + "]";
     }
 
-    public void paintShape(Graphics2D g2) {
+    /**
+     * Paints the line using the specified Graphics2D context.
+     *
+     * @param g2D the graphics context to paint with
+     */
+    public void paintShape(Graphics2D g2D) {
         if (color != null) {
-            g2.setColor(new java.awt.Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));
-            Line2D.Double line = new Line2D.Double(x1, y1, x2, y2);
-            g2.draw(line);
+            g2D.setColor(new java.awt.Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));
+            Line2D.Double line = new Line2D.Double(startX, startY, endX, endY);
+            g2D.draw(line);
         }
     }
 }
