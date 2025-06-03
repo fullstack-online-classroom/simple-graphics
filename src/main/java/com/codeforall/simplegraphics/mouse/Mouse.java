@@ -57,7 +57,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
                 MouseEventType eventType = (MouseEventType) iterator.next();
 
                 if (eventType == MouseEventType.MOUSE_CLICKED) {
-                    handler.mouseClicked(new com.codeforall.simplegraphics.mouse.MouseEvent((double) e.getX(), (double) e.getY(), MouseEventType.MOUSE_CLICKED));
+                    handler.mouseClicked(new com.codeforall.simplegraphics.mouse.MouseEvent(e.getX(), e.getY(), MouseEventType.MOUSE_CLICKED));
                 }
             }
         }
@@ -77,7 +77,7 @@ public class Mouse implements MouseListener, MouseMotionListener {
                 MouseEventType eventType = (MouseEventType) iterator.next();
 
                 if (eventType == MouseEventType.MOUSE_MOVED) {
-                    handler.mouseMoved(new com.codeforall.simplegraphics.mouse.MouseEvent((double) e.getX(), (double) e.getY(), MouseEventType.MOUSE_MOVED));
+                    handler.mouseMoved(new com.codeforall.simplegraphics.mouse.MouseEvent(e.getX(), e.getY(), MouseEventType.MOUSE_MOVED));
                 }
             }
         }
