@@ -27,8 +27,7 @@ public class Color {
      * @param green the green value of the color (between 0 and 255)
      * @param blue the blue value of the color (between 0 and 255)
      */
-    public Color(int red, int green, int blue)
-    {
+    public Color(int red, int green, int blue) {
         this.red = red;
         this.green = green;
         this.blue = blue;
@@ -38,8 +37,7 @@ public class Color {
      * Gets the red value of this color.
      * @return the red value (between 0 and 255)
      */
-    public int getRed()
-    {
+    public int getRed() {
        return red;
     }
 
@@ -47,8 +45,7 @@ public class Color {
      * Gets the green value of this color.
      * @return the green value (between 0 and 255)
      */
-    public int getGreen()
-    {
+    public int getGreen() {
        return green;
     }
 
@@ -56,8 +53,7 @@ public class Color {
      * Gets the blue value of this color.
      * @return the blue value (between 0 and 255)
      */
-    public int getBlue()
-    {
+    public int getBlue() {
        return blue;
     }
 }
