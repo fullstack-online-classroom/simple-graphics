@@ -74,7 +74,7 @@ public class KeyboardEvent {
     public static final int KEY_BACK_SLASH = KeyEvent.VK_BACK_SLASH;
     public static final int KEY_SHIFT = KeyEvent.VK_SHIFT;
     public static final int KEY_TAB = KeyEvent.VK_TAB;
-    
+
     private KeyboardEventType keyboardEventType;
     private int key;
 

@@ -5,6 +5,7 @@ package com.codeforall.online.simplegraphics.keyboard;
  * @see Keyboard
  */
 public enum KeyboardEventType {
+
     KEY_PRESSED,
     KEY_RELEASED
 }
