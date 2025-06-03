@@ -13,8 +13,8 @@ import java.util.Iterator;
  */
 public class Keyboard implements KeyListener {
 
-    KeyboardHandler handler;
-    List<KeyboardEvent> keyboardEvents;
+    private KeyboardHandler handler;
+    private List<KeyboardEvent> keyboardEvents;
 
     public Keyboard(KeyboardHandler handler) {
         Canvas.getInstance().addKeyListener(this);
@@ -93,5 +93,41 @@ public class Keyboard implements KeyListener {
                 handler.keyReleased(event);
             }
         }
+    }
+
+    /**
+     * Returns the current {@link KeyboardHandler} assigned to handle keyboard events.
+     *
+     * @return the keyboard handler
+     */
+    public KeyboardHandler getHandler() {
+        return handler;
+    }
+
+    /**
+     * Sets the {@link KeyboardHandler} that will be used to handle keyboard events.
+     *
+     * @param handler the keyboard handler to set
+     */
+    public void setHandler(KeyboardHandler handler) {
+        this.handler = handler;
+    }
+
+    /**
+     * Returns the list of registered {@link KeyboardEvent}s that this class listens for.
+     *
+     * @return the list of keyboard events
+     */
+    public List<KeyboardEvent> getKeyboardEvents() {
+        return keyboardEvents;
+    }
+
+    /**
+     * Sets the list of {@link KeyboardEvent}s that this class should listen for.
+     *
+     * @param keyboardEvents the list of keyboard events to set
+     */
+    public void setKeyboardEvents(List<KeyboardEvent> keyboardEvents) {
+        this.keyboardEvents = keyboardEvents;
     }
 }
