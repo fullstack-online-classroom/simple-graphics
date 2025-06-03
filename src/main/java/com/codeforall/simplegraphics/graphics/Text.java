@@ -1,9 +1,25 @@
-package com.codeforall.online.simplegraphics.graphics;
+package com.codeforall.simplegraphics.graphics;
 
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * The {@code Text} class represents a drawable text label that can be displayed
+ * on a canvas. It allows setting the text content, changing its position, resizing
+ * the bounding box, and customizing its color.
+ * The text is rendered using a {@link JLabel} and drawn via a {@link Graphics2D}
+ * context.
+ *
+ * Implements:
+ *  <ul>
+ *      <li>{@link Shape} – for rendering and bounding box info</li>
+ *      <li>{@link Colorable} – for setting its color</li>
+ *      <li>{@link Movable} – for translation and scaling</li>
+ *  </ul>
+ *
+ */
 public class Text implements Shape, Colorable, Movable {
+
     private Color color = Color.BLACK;
     private JLabel label = new JLabel();
     private double x;
@@ -68,6 +84,7 @@ public class Text implements Shape, Colorable, Movable {
      * @param dx the amount by which to move in x-direction
      * @param dy the amount by which to move in y-direction
      */
+    @Override
     public void translate(double dx, double dy) {
         x += dx;
         y += dy;
@@ -91,6 +108,7 @@ public class Text implements Shape, Colorable, Movable {
      *
      * @param newColor the new color
      */
+    @Override
     public void setColor(Color newColor) {
         color = newColor;
         Canvas.getInstance().repaint();
@@ -119,19 +137,31 @@ public class Text implements Shape, Colorable, Movable {
         Canvas.getInstance().hide(this);
     }
 
+    /**
+     * Returns a string representation of the text, including both endpoints and the content.
+     *
+     * @return a string describing the text's coordinates and content
+     */
     public String toString() {
         return "Text[x=" + getX() + ",y=" + getY() + ",message=" + label.getText() + "]";
     }
 
-    public void paintShape(Graphics2D g2) {
+    /**
+     * Paints the text using the specified Graphics2D context.
+     *
+     * @param g2D the graphics context to paint with
+     */
+    public void paintShape(Graphics2D g2D) {
+
         if (color != null) {
             label.setForeground(new java.awt.Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));
             Dimension dim = label.getPreferredSize();
+
             if (dim.width > 0 && dim.height > 0) {
                 label.setBounds(0, 0, dim.width, dim.height);
-                g2.translate(getX(), getY());
-                g2.scale(getWidth() / dim.width, getHeight() / dim.height);
-                label.paint(g2);
+                g2D.translate(getX(), getY());
+                g2D.scale(getWidth() / dim.width, getHeight() / dim.height);
+                label.paint(g2D);
             }
         }
     }

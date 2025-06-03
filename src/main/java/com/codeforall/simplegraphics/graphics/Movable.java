@@ -1,4 +1,4 @@
-package com.codeforall.online.simplegraphics.graphics;
+package com.codeforall.simplegraphics.graphics;
 
 /**
  * Methods for moving a shape
@@ -11,6 +11,5 @@ public interface Movable {
      * @param dx the amount by which to move in x-direction
      * @param dy the amount by which to move in y-direction
      */
-    public void translate(double dx, double dy);
-
+    void translate(double dx, double dy);
 }
