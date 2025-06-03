@@ -7,7 +7,7 @@ import java.awt.geom.Ellipse2D;
  * Represents an ellipse shape that can be drawn, filled, moved, and resized.
  * The ellipse is defined by its bounding box, which determines its x/y position, width, and height.
  * This class integrates with the {@link Canvas} to visually render itself.
- * <p>
+ *
  * Implements:
  * <ul>
  *   <li>{@link Shape} – for rendering and bounding box info</li>
