@@ -14,7 +14,7 @@ import java.net.URL;
 
 /**
  * A picture from an image file.
- * 
+ *
  * Implements:
  * <ul>
  *     <li>{@link Shape} – for rendering and bounding box info</li>
