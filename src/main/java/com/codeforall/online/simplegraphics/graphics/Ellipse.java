@@ -87,6 +87,7 @@ public class Ellipse implements Shape, Colorable, Fillable, Movable {
      * @param dx the amount by which to move in x-direction
      * @param dy the amount by which to move in y-direction
      */
+    @Override
     public void translate(double dx, double dy) {
         x += dx;
         y += dy;
@@ -99,6 +100,7 @@ public class Ellipse implements Shape, Colorable, Fillable, Movable {
      * @param dw the amount by which to resize the width on each side
      * @param dh the amount by which to resize the height on each side
      */
+    @Override
     public void grow(double dw, double dh) {
         width += 2 * dw;
         height += 2 * dh;
@@ -112,6 +114,7 @@ public class Ellipse implements Shape, Colorable, Fillable, Movable {
      *
      * @param newColor the new color
      */
+    @Override
     public void setColor(Color newColor) {
         color = newColor;
         Canvas.getInstance().repaint();
@@ -120,6 +123,7 @@ public class Ellipse implements Shape, Colorable, Fillable, Movable {
     /**
      * Draws this ellipse on the canvas.
      */
+    @Override
     public void draw() {
         filled = false;
         Canvas.getInstance().show(this);
@@ -128,6 +132,7 @@ public class Ellipse implements Shape, Colorable, Fillable, Movable {
     /**
      * Deletes this ellipse from the canvas
      */
+    @Override
     public void delete() {
         Canvas.getInstance().hide(this);
     }
@@ -135,6 +140,7 @@ public class Ellipse implements Shape, Colorable, Fillable, Movable {
     /**
      * Fills this ellipse.
      */
+    @Override
     public void fill() {
         filled = true;
         Canvas.getInstance().show(this);
@@ -145,6 +151,7 @@ public class Ellipse implements Shape, Colorable, Fillable, Movable {
      *
      * @return a string describing the ellipse's position and dimensions
      */
+    @Override
     public String toString() {
         return "Ellipse[x=" + getX() + ",y=" + getY() + ",width=" + getWidth() + ",height=" + getHeight() + "]";
     }
@@ -155,6 +162,7 @@ public class Ellipse implements Shape, Colorable, Fillable, Movable {
      *
      * @param g2D the Graphics2D context to draw with
      */
+    @Override
     public void paintShape(Graphics2D g2D) {
         Ellipse2D.Double ellipse = new Ellipse2D.Double(getX(), getY(), getWidth(), getHeight());
         g2D.setColor(new java.awt.Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));

@@ -43,6 +43,7 @@ public class Line implements Shape, Colorable, Movable {
      *
      * @return the leftmost x-position
      */
+    @Override
     public int getX() {
         return (int) Math.round(Math.min(startX, endX));
     }
@@ -52,6 +53,7 @@ public class Line implements Shape, Colorable, Movable {
      *
      * @return the topmost y-position
      */
+    @Override
     public int getY() {
         return (int) Math.round(Math.min(startY, endY));
     }
@@ -61,6 +63,7 @@ public class Line implements Shape, Colorable, Movable {
      *
      * @return the width
      */
+    @Override
     public int getWidth() {
         return (int) Math.round(Math.abs(endX - startX));
     }
@@ -70,6 +73,7 @@ public class Line implements Shape, Colorable, Movable {
      *
      * @return the height
      */
+    @Override
     public int getHeight() {
         return (int) Math.round(Math.abs(endY - startY));
     }
@@ -80,6 +84,7 @@ public class Line implements Shape, Colorable, Movable {
      * @param dx the amount by which to move in x-direction
      * @param dy the amount by which to move in y-direction
      */
+    @Override
     public void translate(double dx, double dy) {
         startX += dx;
         startY += dy;
@@ -94,6 +99,7 @@ public class Line implements Shape, Colorable, Movable {
      * @param dw the amount by which to resize the width on each side
      * @param dh the amount by which to resize the height on each side
      */
+    @Override
     public void grow(double dw, double dh) {
 
         if (startX <= endX) {
@@ -122,6 +128,7 @@ public class Line implements Shape, Colorable, Movable {
      *
      * @param newColor the new color
      */
+    @Override
     public void setColor(Color newColor) {
         color = newColor;
         Canvas.getInstance().repaint();
@@ -130,6 +137,7 @@ public class Line implements Shape, Colorable, Movable {
     /**
      * Shows this line on the canvas.
      */
+    @Override
     public void draw() {
         Canvas.getInstance().show(this);
     }
@@ -137,6 +145,7 @@ public class Line implements Shape, Colorable, Movable {
     /**
      * Deletes this line from the canvas.
      */
+    @Override
     public void delete() {
         Canvas.getInstance().hide(this);
     }
@@ -146,6 +155,7 @@ public class Line implements Shape, Colorable, Movable {
      *
      * @return a string describing the line's coordinates
      */
+    @Override
     public String toString() {
         return "Line[startX=" + startX + ",startY=" + startY + ",endX=" + endX + ",endY=" + endY + "]";
     }
@@ -155,6 +165,7 @@ public class Line implements Shape, Colorable, Movable {
      *
      * @param g2D the graphics context to paint with
      */
+    @Override
     public void paintShape(Graphics2D g2D) {
         if (color != null) {
             g2D.setColor(new java.awt.Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));

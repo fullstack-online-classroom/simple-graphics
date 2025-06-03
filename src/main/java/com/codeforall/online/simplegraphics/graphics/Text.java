@@ -84,6 +84,7 @@ public class Text implements Shape, Colorable, Movable {
      * @param dx the amount by which to move in x-direction
      * @param dy the amount by which to move in y-direction
      */
+    @Override
     public void translate(double dx, double dy) {
         x += dx;
         y += dy;
@@ -107,6 +108,7 @@ public class Text implements Shape, Colorable, Movable {
      *
      * @param newColor the new color
      */
+    @Override
     public void setColor(Color newColor) {
         color = newColor;
         Canvas.getInstance().repaint();

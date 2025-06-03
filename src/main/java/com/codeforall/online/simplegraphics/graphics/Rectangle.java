@@ -99,6 +99,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
      * @param dx the amount by which to move in x-direction
      * @param dy the amount by which to move in y-direction
      */
+    @Override
     public void translate(double dx, double dy) {
         x += dx;
         y += dy;
