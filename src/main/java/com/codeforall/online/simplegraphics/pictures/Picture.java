@@ -291,17 +291,17 @@ public class Picture implements Shape, Movable {
     /**
      * Draws this shape.
      *
-     * @param g2 the graphics context
+     * @param g2D the graphics context
      */
-    public void paintShape(Graphics2D g2) {
+    public void paintShape(Graphics2D g2D) {
         if (image != null) {
             Dimension dim = label.getPreferredSize();
             if (dim.width > 0 && dim.height > 0) {
                 label.setBounds(0, 0, dim.width, dim.height);
-                g2.translate(getX(), getY());
-                g2.scale((image.getWidth() + 2 * xGrow) / dim.width,
+                g2D.translate(getX(), getY());
+                g2D.scale((image.getWidth() + 2 * xGrow) / dim.width,
                         (image.getHeight() + 2 * yGrow) / dim.height);
-                label.paint(g2);
+                label.paint(g2D);
             }
         }
     }

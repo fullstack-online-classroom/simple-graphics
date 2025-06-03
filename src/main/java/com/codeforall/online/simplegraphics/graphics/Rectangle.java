@@ -167,7 +167,7 @@ public class Rectangle implements Shape, Colorable, Fillable, Movable {
     }
 
     /**
-     * Paints the line using the specified Graphics2D context.
+     * Paints the rectangle using the specified Graphics2D context.
      *
      * @param g2D the graphics context to paint with
      */
