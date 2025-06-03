@@ -88,100 +88,35 @@ public class Mouse implements MouseListener, MouseMotionListener {
      * @see MouseListener#mousePressed(MouseEvent)
      */
     @Override
-    public void mousePressed(MouseEvent e) {
-
-        if (handler != null) {
-            Iterator iterator = mouseEventTypes.iterator();
-
-            while (iterator.hasNext()) {
-                MouseEventType eventType = (MouseEventType) iterator.next();
-
-                if (eventType == MouseEventType.MOUSE_PRESSED) {
-                    handler.mousePressed(new com.codeforall.simplegraphics.mouse.MouseEvent((double) e.getX(), (double) e.getY(), MouseEventType.MOUSE_PRESSED));
-                }
-            }
-        }
-    }
+    public void mousePressed(MouseEvent e) {}
 
     /**
      * @param e the event to be processed
      * @see MouseListener#mouseReleased(MouseEvent)
      */
     @Override
-    public void mouseReleased(MouseEvent e) {
-
-        if (handler != null) {
-            Iterator iterator = mouseEventTypes.iterator();
-
-            while (iterator.hasNext()) {
-                MouseEventType eventType = (MouseEventType) iterator.next();
-
-                if (eventType == MouseEventType.MOUSE_RELEASED) {
-                    handler.mouseReleased(new com.codeforall.simplegraphics.mouse.MouseEvent((double) e.getX(), (double) e.getY(), MouseEventType.MOUSE_RELEASED));
-                }
-            }
-        }
-    }
+    public void mouseReleased(MouseEvent e) {}
 
     /**
      * @param e the event to be processed
      * @see MouseListener#mouseEntered(MouseEvent)
      */
     @Override
-    public void mouseEntered(MouseEvent e) {
-
-        if (handler != null) {
-            Iterator iterator = mouseEventTypes.iterator();
-
-            while (iterator.hasNext()) {
-                MouseEventType eventType = (MouseEventType) iterator.next();
-
-                if (eventType == MouseEventType.MOUSE_ENTERED) {
-                    handler.mouseEntered(new com.codeforall.simplegraphics.mouse.MouseEvent((double) e.getX(), (double) e.getY(), MouseEventType.MOUSE_ENTERED));
-                }
-            }
-        }
-    }
+    public void mouseEntered(MouseEvent e) {}
 
     /**
      * @param e the event to be processed
      * @see MouseListener#mouseExited(MouseEvent)
      */
     @Override
-    public void mouseExited(MouseEvent e) {
-
-        if (handler != null) {
-            Iterator iterator = mouseEventTypes.iterator();
-
-            while (iterator.hasNext()) {
-                MouseEventType eventType = (MouseEventType) iterator.next();
-
-                if (eventType == MouseEventType.MOUSE_EXITED) {
-                    handler.mouseExited(new com.codeforall.simplegraphics.mouse.MouseEvent((double) e.getX(), (double) e.getY(), MouseEventType.MOUSE_EXITED));
-                }
-            }
-        }
-    }
+    public void mouseExited(MouseEvent e) {}
 
     /**
      * @param e the event to be processed
      * @see MouseMotionListener#mouseDragged(MouseEvent)
      */
     @Override
-    public void mouseDragged(MouseEvent e) {
-
-        if (handler != null) {
-            Iterator iterator = mouseEventTypes.iterator();
-
-            while (iterator.hasNext()) {
-                MouseEventType eventType = (MouseEventType) iterator.next();
-
-                if (eventType == MouseEventType.MOUSE_DRAGGED) {
-                    handler.mouseDragged(new com.codeforall.simplegraphics.mouse.MouseEvent((double) e.getX(), (double) e.getY(), MouseEventType.MOUSE_DRAGGED));
-                }
-            }
-        }
-    }
+    public void mouseDragged(MouseEvent e) {}
 
     /**
      * Returns the current {@link MouseHandler} assigned to handle mouse events.
