@@ -9,5 +9,4 @@ public interface Fillable {
      * Paints the shape with the current shape color
      */
     void fill();
-
 }
