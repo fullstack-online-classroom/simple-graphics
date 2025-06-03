@@ -92,7 +92,7 @@ public class Canvas {
     public static void snapshot() {
         Dimension dim = getInstance().component.getPreferredSize();
         Rectangle rect = new Rectangle(0, 0, dim.width, dim.height);
-        BufferedImage image = new BufferedImage(rect.width, rect.height, 1);
+        BufferedImage image = new BufferedImage(rect.width, rect.height, BufferedImage.TYPE_INT_RGB);
 
         Graphics g = image.getGraphics();
         g.setColor(Color.WHITE);
@@ -114,7 +114,7 @@ public class Canvas {
      *
      * @param shape the shape to display
      */
-    public void show(com.codeforall.simplegraphics.graphics.Shape shape) {
+    public void show(Shape shape) {
         if (!shapes.contains(shape)) {
             shapes.add(shape);
         }
@@ -127,7 +127,7 @@ public class Canvas {
      *
      * @param shape the shape to hide
      */
-    public void hide(com.codeforall.simplegraphics.graphics.Shape shape) {
+    public void hide(Shape shape) {
         if (shapes.contains(shape)) {
             shapes.remove(shape);
         }
@@ -139,16 +139,18 @@ public class Canvas {
      * Repaints the canvas if needed.
      */
     public void repaint() {
-        if (frame != null) {
+        if (frame == null) {
             return;
         }
 
         Dimension dim = component.getPreferredSize();
 
-        if (dim.getWidth() <= (double) component.getWidth() && dim.getHeight() <= (double) component.getHeight()) {
-            frame.repaint();
-        } else {
+        if (dim.getWidth() > component.getWidth()
+                || dim.getHeight() > component.getHeight()) {
             frame.pack();
+
+        } else {
+            frame.repaint();
         }
     }
 
@@ -160,7 +162,7 @@ public class Canvas {
     public void saveToDisk(String fileName) {
         Dimension dim = component.getPreferredSize();
         Rectangle rect = new Rectangle(0, 0, dim.width, dim.height);
-        BufferedImage image = new BufferedImage(rect.width, rect.height, 1);
+        BufferedImage image = new BufferedImage(rect.width, rect.height, BufferedImage.TYPE_INT_RGB);
 
         Graphics2D g = (Graphics2D) image.getGraphics();
         g.setColor(Color.WHITE);
@@ -228,7 +230,7 @@ public class Canvas {
                 g.drawImage(background, 0, 0, null);
             }
 
-            for (com.codeforall.simplegraphics.graphics.Shape s : new ArrayList<>(shapes)) {
+            for (Shape s : new ArrayList<>(shapes)) {
                 Graphics2D g2D = (Graphics2D) g.create();
                 s.paintShape(g2D);
                 g2D.dispose();
