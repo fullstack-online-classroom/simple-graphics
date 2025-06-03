@@ -1,4 +1,4 @@
-package com.codeforall.online.simplegraphics.mouse;
+package com.codeforall.simplegraphics.mouse;
 
 /**
  * Mouse event containing x and y coordinates and the mouse event type

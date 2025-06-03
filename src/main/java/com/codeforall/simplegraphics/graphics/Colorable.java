@@ -1,4 +1,4 @@
-package com.codeforall.online.simplegraphics.graphics;
+package com.codeforall.simplegraphics.graphics;
 
 /**
  * Methods for modifying a shape color

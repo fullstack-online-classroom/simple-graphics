@@ -1,9 +1,7 @@
-package com.codeforall.online.simplegraphics.pictures;
+package com.codeforall.simplegraphics.pictures;
 
-import com.codeforall.online.simplegraphics.graphics.Movable;
-import com.codeforall.online.simplegraphics.graphics.Shape;
-import com.codeforall.online.simplegraphics.graphics.Color;
-import com.codeforall.online.simplegraphics.graphics.Canvas;
+import com.codeforall.simplegraphics.graphics.Movable;
+import com.codeforall.simplegraphics.graphics.Shape;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -141,7 +139,7 @@ public class Picture implements Shape, Movable {
             ex.printStackTrace();
         }
 
-        Canvas.getInstance().repaint();
+        com.codeforall.simplegraphics.graphics.Canvas.getInstance().repaint();
     }
 
     /**
@@ -250,7 +248,7 @@ public class Picture implements Shape, Movable {
      * @param i the pixel index
      * @return the color at pixel i
      */
-    public Color getColorAt(int i) {
+    public com.codeforall.simplegraphics.graphics.Color getColorAt(int i) {
 
         if (image == null || i < 0 || i >= pixels()) {
             throw new IndexOutOfBoundsException("" + i);
@@ -266,7 +264,7 @@ public class Picture implements Shape, Movable {
      * @param i     the pixel index
      * @param color the new color for the pixel
      */
-    public void setColorAt(int i, Color color) {
+    public void setColorAt(int i, com.codeforall.simplegraphics.graphics.Color color) {
 
         if (image == null || i < 0 || i >= pixels()) {
             throw new IndexOutOfBoundsException("" + i);
@@ -283,14 +281,14 @@ public class Picture implements Shape, Movable {
      * @param y the y-coordinate (row) of the pixel
      * @return the color of the pixel
      */
-    public Color getColorAt(int x, int y) {
+    public com.codeforall.simplegraphics.graphics.Color getColorAt(int x, int y) {
 
         if (image == null || x < 0 || x >= image.getWidth() || y < 0 || y >= image.getHeight()) {
             throw new IndexOutOfBoundsException("(" + x + "," + y + ")");
 
         } else {
             int rgb = image.getRGB(x, y) & 0xFFFFFF;
-            return new Color(rgb / 65536, (rgb / 256) % 256, rgb % 256);
+            return new com.codeforall.simplegraphics.graphics.Color(rgb / 65536, (rgb / 256) % 256, rgb % 256);
         }
     }
 
@@ -301,14 +299,14 @@ public class Picture implements Shape, Movable {
      * @param y     the y-coordinate (row) of the pixel
      * @param color the color of the pixel at the given row and column
      */
-    public void setColorAt(int x, int y, Color color) {
+    public void setColorAt(int x, int y, com.codeforall.simplegraphics.graphics.Color color) {
 
         if (image == null || x < 0 || x >= image.getWidth() || y < 0 || y >= image.getHeight()) {
             throw new IndexOutOfBoundsException("(" + x + "," + y + ")");
 
         } else {
             image.setRGB(x, y, ((int) color.getRed()) * 65536 + ((int) color.getGreen()) * 256 + (int) color.getBlue());
-            Canvas.getInstance().repaint();
+            com.codeforall.simplegraphics.graphics.Canvas.getInstance().repaint();
         }
     }
 
@@ -322,7 +320,7 @@ public class Picture implements Shape, Movable {
     public void translate(double dx, double dy) {
         x += dx;
         y += dy;
-        Canvas.getInstance().repaint();
+        com.codeforall.simplegraphics.graphics.Canvas.getInstance().repaint();
     }
 
     /**
@@ -335,7 +333,7 @@ public class Picture implements Shape, Movable {
     public void grow(double dw, double dh) {
         xGrow += dw;
         yGrow += dh;
-        Canvas.getInstance().repaint();
+        com.codeforall.simplegraphics.graphics.Canvas.getInstance().repaint();
     }
 
     /**
@@ -343,7 +341,7 @@ public class Picture implements Shape, Movable {
      */
     @Override
     public void draw() {
-        Canvas.getInstance().show(this);
+        com.codeforall.simplegraphics.graphics.Canvas.getInstance().show(this);
     }
 
     /**
@@ -351,7 +349,7 @@ public class Picture implements Shape, Movable {
      */
     @Override
     public void delete() {
-        Canvas.getInstance().hide(this);
+        com.codeforall.simplegraphics.graphics.Canvas.getInstance().hide(this);
     }
 
     /**

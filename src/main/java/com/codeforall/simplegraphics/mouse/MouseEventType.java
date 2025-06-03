@@ -1,4 +1,4 @@
-package com.codeforall.online.simplegraphics.mouse;
+package com.codeforall.simplegraphics.mouse;
 
 public enum MouseEventType {
 

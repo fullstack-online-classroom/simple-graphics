@@ -1,4 +1,4 @@
-package com.codeforall.online.simplegraphics.graphics;
+package com.codeforall.simplegraphics.graphics;
 
 import java.awt.*;
 import java.awt.geom.Line2D;

@@ -1,4 +1,4 @@
-package com.codeforall.online.simplegraphics.mouse;
+package com.codeforall.simplegraphics.mouse;
 
 /**
  * Interface to be implemented by all classes that want to receive mouse events

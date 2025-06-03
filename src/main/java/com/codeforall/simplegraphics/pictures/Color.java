@@ -1,20 +1,16 @@
-package com.codeforall.online.simplegraphics.graphics;
+package com.codeforall.simplegraphics.pictures;
 
 /**
- * Represents a simple RGB color definition used for graphical shapes.
- * This class provides predefined constants for commonly used colors
- * and allows the creation of custom colors using red, green, and blue components.
- * Values for red, green, and blue should be between 0 and 255.
- * <strong>Note:</strong> This class is distinct from {@code java.awt.Color}
- * and is intended for use within the simplegraphics library.
+ * A simple representation of an RGB color for pictures.
+ * This class encapsulates the red, green, and blue components of a color,
+ * each represented by an integer value between 0 and 255.
  */
 public class Color {
 
+    // Color constants
     public static final Color RED = new Color(255, 0, 0);
     public static final Color GREEN = new Color(0, 255, 0);
     public static final Color BLUE = new Color(0, 0, 255);
-
-    // Color constants
     public static final Color WHITE = new Color(255, 255, 255);
     public static final Color LIGHT_GRAY = new Color(192, 192, 192);
     public static final Color GRAY = new Color(128, 128, 128);
@@ -32,10 +28,9 @@ public class Color {
 
     /**
      * Constructs a new Color object.
-     *
-     * @param red   the red value of the color (between 0 and 255)
+     * @param red the red value of the color (between 0 and 255)
      * @param green the green value of the color (between 0 and 255)
-     * @param blue  the blue value of the color (between 0 and 255)
+     * @param blue the blue value of the color (between 0 and 255)
      */
     public Color(int red, int green, int blue) {
         this.red = red;
@@ -68,5 +63,15 @@ public class Color {
      */
     public int getBlue() {
         return blue;
+    }
+
+    /**
+     * Returns a string representation of the color.
+     *
+     * @return a string describing the RGB color
+     */
+    @Override
+    public String toString() {
+        return "Color[red=" + red + ",green=" + green + ",blue=" + blue + "]";
     }
 }

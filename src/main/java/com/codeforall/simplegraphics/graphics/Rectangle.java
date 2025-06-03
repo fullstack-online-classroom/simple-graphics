@@ -1,4 +1,4 @@
-package com.codeforall.online.simplegraphics.graphics;
+package com.codeforall.simplegraphics.graphics;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
@@ -10,7 +10,7 @@ import java.awt.geom.Rectangle2D;
  *
  * Implements:
  *  <ul>
- *      <li>{@link Shape} – for rendering and bounding box info</li>
+ *      <li>{@link com.codeforall.simplegraphics.graphics.Shape} – for rendering and bounding box info</li>
  *      <li>{@link Colorable} – for setting its color</li>
  *      <li>{@link Fillable} – for supporting fill operations</li>
  *      <li>{@link Movable} – for translation and scaling</li>
