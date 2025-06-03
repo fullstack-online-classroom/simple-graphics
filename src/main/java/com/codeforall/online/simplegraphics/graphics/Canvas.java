@@ -18,6 +18,7 @@ import java.util.ArrayList;
  * Singleton Canvas class responsible for managing and displaying graphical shapes.
  */
 public class Canvas {
+
     private static final int MIN_SIZE = 100;
     private static final int MARGIN = 10;
     private static final int LOCATION_OFFSET = 120;

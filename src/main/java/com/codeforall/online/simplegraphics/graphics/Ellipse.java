@@ -3,7 +3,21 @@ package com.codeforall.online.simplegraphics.graphics;
 import java.awt.*;
 import java.awt.geom.Ellipse2D;
 
+/**
+ * Represents an ellipse shape that can be drawn, filled, moved, and resized.
+ * The ellipse is defined by its bounding box, which determines its x/y position, width, and height.
+ * This class integrates with the {@link Canvas} to visually render itself.
+ * <p>
+ * Implements:
+ * <ul>
+ *   <li>{@link Shape} – for rendering and bounding box info</li>
+ *   <li>{@link Colorable} – for setting its color</li>
+ *   <li>{@link Fillable} – for supporting fill operations</li>
+ *   <li>{@link Movable} – for translation and scaling</li>
+ * </ul>
+ */
 public class Ellipse implements Shape, Colorable, Fillable, Movable {
+
     private Color color = Color.BLACK;
     private boolean filled = false;
     private double x;
@@ -126,17 +140,30 @@ public class Ellipse implements Shape, Colorable, Fillable, Movable {
         Canvas.getInstance().show(this);
     }
 
+    /**
+     * Returns a string representation of this ellipse.
+     *
+     * @return a string describing the ellipse's position and dimensions
+     */
     public String toString() {
         return "Ellipse[x=" + getX() + ",y=" + getY() + ",width=" + getWidth() + ",height=" + getHeight() + "]";
     }
 
-    public void paintShape(Graphics2D g2) {
+    /**
+     * Paints this ellipse using the given Graphics2D context.
+     * This is called by the canvas to render the shape.
+     *
+     * @param g2D the Graphics2D context to draw with
+     */
+    public void paintShape(Graphics2D g2D) {
         Ellipse2D.Double ellipse = new Ellipse2D.Double(getX(), getY(), getWidth(), getHeight());
-        g2.setColor(new java.awt.Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));
+        g2D.setColor(new java.awt.Color((int) color.getRed(), (int) color.getGreen(), (int) color.getBlue()));
+
         if (filled) {
-            g2.fill(ellipse);
+            g2D.fill(ellipse);
+
         } else {
-            g2.draw(ellipse);
+            g2D.draw(ellipse);
         }
     }
 }
