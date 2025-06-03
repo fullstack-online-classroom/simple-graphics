@@ -46,6 +46,7 @@ public class Canvas {
 
     /**
      * Sets the maximum width of the canvas.
+     *
      * @param width maximum width
      */
     public static void setMaxX(int width) {
@@ -54,6 +55,7 @@ public class Canvas {
 
     /**
      * Sets the maximum height of the canvas.
+     *
      * @param height maximum height
      */
     public static void setMaxY(int height) {
@@ -62,6 +64,7 @@ public class Canvas {
 
     /**
      * Returns the singleton instance of the Canvas.
+     *
      * @return Canvas instance
      */
     public static Canvas getInstance() {
@@ -107,6 +110,7 @@ public class Canvas {
 
     /**
      * Displays the given shape on the canvas.
+     *
      * @param shape the shape to display
      */
     public void show(Shape shape) {
@@ -119,6 +123,7 @@ public class Canvas {
 
     /**
      * Hides the given shape from the canvas.
+     *
      * @param shape the shape to hide
      */
     public void hide(Shape shape) {
@@ -148,6 +153,7 @@ public class Canvas {
 
     /**
      * Saves the current canvas view to disk as an image.
+     *
      * @param fileName the path and fileName to save to
      */
     public void saveToDisk(String fileName) {
@@ -175,6 +181,7 @@ public class Canvas {
 
     /**
      * Adds a KeyListener to the canvas.
+     *
      * @param handler the KeyListener to add
      */
     public void addKeyListener(KeyListener handler) {
@@ -183,6 +190,7 @@ public class Canvas {
 
     /**
      * Adds a MouseListener to the canvas.
+     *
      * @param handler the MouseListener to add
      */
     public void addMouseListener(MouseListener handler) {
@@ -191,6 +199,7 @@ public class Canvas {
 
     /**
      * Adds a MouseMotionListener to the canvas.
+     *
      * @param handler the MouseMotionListener to add
      */
     public void addMouseMotionListener(MouseMotionListener handler) {
@@ -206,6 +215,7 @@ public class Canvas {
 
         /**
          * Paints the component by drawing the background and all visible shapes.
+         *
          * @param g the Graphics context in which to paint
          */
         public void paintComponent(Graphics g) {
@@ -226,6 +236,7 @@ public class Canvas {
 
         /**
          * Calculates the preferred size of the canvas based on the shapes and background image.
+         *
          * @return the preferred Dimension of the canvas
          */
         public Dimension getPreferredSize() {
@@ -239,7 +250,7 @@ public class Canvas {
 
             if (Canvas.MAX_X == 0 && Canvas.MAX_Y == 0) {
 
-                for(Shape s : shapes) {
+                for (Shape s : shapes) {
                     width = Math.max(width, s.getX() + s.getWidth());
                     height = Math.max(height, s.getY() + s.getHeight());
                 }
