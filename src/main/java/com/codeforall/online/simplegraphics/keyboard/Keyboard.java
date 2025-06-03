@@ -1,6 +1,7 @@
 package com.codeforall.online.simplegraphics.keyboard;
 
 import com.codeforall.online.simplegraphics.graphics.Canvas;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
@@ -13,45 +14,43 @@ import java.util.Iterator;
 public class Keyboard implements KeyListener {
 
     KeyboardHandler handler;
-    List<KeyboardEvent> keyboardEventArrayList;
+    List<KeyboardEvent> keyboardEvents;
 
-    /**
-     * @param handler the keyboard handler
-     */
     public Keyboard(KeyboardHandler handler) {
-
         Canvas.getInstance().addKeyListener(this);
 
         this.handler = handler;
-        keyboardEventArrayList = new ArrayList<KeyboardEvent>();
-
+        keyboardEvents = new ArrayList<>();
     }
 
     /**
      * Add a new Keyboard event listener
+     *
      * @param keyboardEvent the event to add
      */
     public void addEventListener(KeyboardEvent keyboardEvent) {
-        keyboardEventArrayList.add(keyboardEvent);
+        keyboardEvents.add(keyboardEvent);
     }
 
     /**
      * Remove an existing Keyboard event listener
+     *
      * @param keyboardEvent the event to remove
      */
     public void removeEventListener(KeyboardEvent keyboardEvent) {
-        keyboardEventArrayList.remove(keyboardEvent);
+        keyboardEvents.remove(keyboardEvent);
     }
 
     /**
-     * @see KeyListener#keyTyped(KeyEvent)
      * @param e the event
+     * @see KeyListener#keyTyped(KeyEvent)
      */
     @Override
     public void keyTyped(KeyEvent e) {
     }
 
     /**
+     * @param e the event
      * @see KeyboardHandler#keyPressed(KeyboardEvent)
      */
     @Override
@@ -61,17 +60,20 @@ public class Keyboard implements KeyListener {
             return;
         }
 
-        Iterator<KeyboardEvent> iterator = keyboardEventArrayList.iterator();
+        Iterator<KeyboardEvent> iterator = keyboardEvents.iterator();
+
         while (iterator.hasNext()) {
-            KeyboardEvent ke = iterator.next();
-            if (ke.getKeyboardEventType() == KeyboardEventType.KEY_PRESSED &&
-                    ke.getKey() == e.getKeyCode()) {
-                    handler.keyPressed(ke);
+            KeyboardEvent event = iterator.next();
+
+            if (event.getKeyboardEventType() == KeyboardEventType.KEY_PRESSED &&
+                    event.getKey() == e.getKeyCode()) {
+                handler.keyPressed(event);
             }
         }
     }
 
     /**
+     * @param e the event
      * @see KeyboardHandler#keyReleased(KeyboardEvent)
      */
     @Override
@@ -81,12 +83,14 @@ public class Keyboard implements KeyListener {
             return;
         }
 
-        Iterator<KeyboardEvent> iterator = keyboardEventArrayList.iterator();
+        Iterator<KeyboardEvent> iterator = keyboardEvents.iterator();
+
         while (iterator.hasNext()) {
-            KeyboardEvent ke = iterator.next();
-            if (ke.getKeyboardEventType() == KeyboardEventType.KEY_RELEASED &&
-                    ke.getKey() == e.getKeyCode()) {
-                handler.keyReleased(ke);
+            KeyboardEvent event = iterator.next();
+
+            if (event.getKeyboardEventType() == KeyboardEventType.KEY_RELEASED &&
+                    event.getKey() == e.getKeyCode()) {
+                handler.keyReleased(event);
             }
         }
     }
