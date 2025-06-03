@@ -27,7 +27,7 @@ public class Canvas {
     private static int MAX_Y = 0;
     private static Canvas instance = new Canvas();
 
-    private ArrayList<com.codeforall.simplegraphics.graphics.Shape> shapes = new ArrayList<>();
+    private ArrayList<Shape> shapes = new ArrayList<>();
     private BufferedImage background;
     private JFrame frame;
     private CanvasComponent component;
@@ -79,7 +79,7 @@ public class Canvas {
     public static void pause() {
         JFrame frame = getInstance().frame;
 
-        if (frame != null) {
+        if (frame == null) {
             return;
         }
 
