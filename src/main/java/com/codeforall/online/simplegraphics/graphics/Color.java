@@ -1,5 +1,13 @@
 package com.codeforall.online.simplegraphics.graphics;
 
+/**
+ * Represents a simple RGB color definition used for graphical shapes.
+ * This class provides predefined constants for commonly used colors
+ * and allows the creation of custom colors using red, green, and blue components.
+ * Values for red, green, and blue should be between 0 and 255.
+ * <strong>Note:</strong> This class is distinct from {@code java.awt.Color}
+ * and is intended for use within the simplegraphics library.
+ */
 public class Color {
     public static final Color RED = new Color(255, 0, 0);
     public static final Color GREEN = new Color(0, 255, 0);
